@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>APK APPS STARTER</title>
+
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                MENU
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/homeapk}">
+                Aplikasi Pelayanan Kartu
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+        <div class="row">
+            <!-- uncomment code for absolute positioning tweek see top comment in css -->
+            <div class="absolute-wrapper"> </div>
+            <!-- Menu -->
+            <div class="side-menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li><a th:href="@{/homeapk}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a th:href="@{/manage}"><span class="glyphicon glyphicon-edit"></span> Manage</a></li>
+                            <li><a th:href="@{/entercariusul}"><span class="glyphicon glyphicon-print"></span> Cetak Kartu</a></li>
+                            <li><a th:href="@{/apk}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-10">
+        <div class="col-md-10 content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="text-center">CETAK KARTU</h1>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container">
+                        <table class="table table-striped container">
+                            <tr th:each="usulkartus : ${usulkartu}">
+                                <th class="">NIP : <td class="" th:text="${usulkartus.nip.nip}"></td></th>
+                            </tr>
+                            <tr th:each="usulkartus : ${usulkartu}">
+                                <th class="">Nama : <td class="" th:text="${usulkartus.nip.nama}"></td></th>
+                            </tr>
+
+                            <tr th:each="usulkartus : ${usulkartu} ">
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            KARTU PEGAWAI <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a th:href="@{'/cetakKarpegDepan/'+${usulkartus.nip.nip}}" target="_blank">DEPAN</a></li>
+                                            <li><a th:href="@{'/cetakKarpegBelakang/'+${usulkartus.nip.nip}}" target="_blank">BELAKANG</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td th:each="usulkartus : ${usulkartu}">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            KARTU SUAMI <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a th:href="@{'/cetakKarsuDepan/'+${usulkartus.nip.nip}}" target="_blank">DEPAN</a></li>
+                                            <li><a th:href="@{'/cetakKarsuBelakang/'+${usulkartus.nip.nip}}" target="_blank">BELAKANG</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+
+
+</body>
+</html>

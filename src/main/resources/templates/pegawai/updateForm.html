@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>APK APPS STARTER</title>
+
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                MENU
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/homeapk}">
+                Aplikasi Pelayanan Kartu
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+        <div class="row">
+            <!-- uncomment code for absolute positioning tweek see top comment in css -->
+            <div class="absolute-wrapper"> </div>
+            <!-- Menu -->
+            <div class="side-menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li><a th:href="@{/homeapk}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a th:href="@{/manage}"><span class="glyphicon glyphicon-edit"></span> Manage</a></li>
+                            <li><a th:href="@{/entercariusul}"><span class="glyphicon glyphicon-print"></span> Cetak Kartu</a></li>
+                            <li><a th:href="@{/apk}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-10">
+        <div class="col-md-10 content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="text-center">UPDATE PEGAWAI</h1>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <form class="form-horizontal" th:object="${pegawai}" th:action="@{/manage/save}"  method="post">
+                                    <input type="hidden" th:field="*{id}"/>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Nama :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" th:field="*{nama}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">NIP :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" th:field="*{nip}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Tempat Lahir </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" th:field="*{tmplahir}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Tanggal Lahir </label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" th:field="*{tgllahir}" placeholder="yyyy-mm-dd"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Jenis Kelamin </label>
+                                        <label class="radio-inline"><input type="radio" value="Pria" th:field="*{jk}">Pria</label>
+                                        <label class="radio-inline"><input type="radio" value="Wanita" th:field="*{jk}">Wanita</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Status Perkawinan </label>
+                                        <label class="radio-inline"><input type="radio" value="Sudah Menikah" th:field="*{statusperkawinan}">Sudah Menikah</label>
+                                        <label class="radio-inline"><input type="radio" value="Belum Menikah" th:field="*{statusperkawinan}">Belum Menikah</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Nama Pasangan (Suami/ Istri) </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" th:field="*{namapasangan}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Tanggal Lahir Pasangan(Suami/ Istri) </label>
+                                        <div class="col-sm-10">
+                                            <input type="date" class="form-control" th:field="*{tgllahirpasangan}" placeholder="yyyy-mm-dd"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type ="submit" class="btn btn-default">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+
+
+</body>
+</html>

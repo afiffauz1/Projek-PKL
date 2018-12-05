@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>KARPEG BELAKANG</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/pageSize.css}" rel="stylesheet" media="screen"/>
+
+
+</head>
+
+<body>
+
+<page size="cetak">
+    <pre>
+       <tr th:each="usulkartus : ${usulkartu}">
+           <h4><td class="text-center" th:text="${usulkartus.kodekaris.kodekaris}+' '+${usulkartus.kodeinstansi.kodeinstansi}+''+${usulkartus.nomorurutkaris}"></td></h4>
+           <th>Nama : <td class="text-center" th:text="${usulkartus.nip.namapasangan}"></td></th>
+           <th>Tanggal Lahir : <td class="text-center" th:text="${#dates.format(usulkartus.nip.tgllahirpasangan,'yyyy-MM-dd')}"></td></th>
+        </tr>
+    </pre>
+</page>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
