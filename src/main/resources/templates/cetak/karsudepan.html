@@ -21,7 +21,7 @@
 <page size="cetak">
     <pre>
        <tr th:each="usulkartus : ${usulkartu}">
-            <h4><td class="text-center" th:text="${usulkartus.kodekarsu.kodekarsu}+' '+${usulkartus.kodeinstansi.kodeinstansi}+''+${usulkartus.nomorurutkarsu}"></td></h4>
+            <h4><td class="text-center" th:text="${usulkartus.kodeinstansi.kodekarsu}+' '+${usulkartus.kodeinstansi.kodeinstansi}+''+${usulkartus.nomorurutkarsu}"></td></h4>
         </tr>
     </pre>
 </page>

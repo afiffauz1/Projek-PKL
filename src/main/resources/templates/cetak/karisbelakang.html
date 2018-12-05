@@ -21,7 +21,7 @@
 <page size="cetak">
     <pre>
        <tr th:each="usulkartus : ${usulkartu}">
-           <h4><td class="text-center" th:text="${usulkartus.kodekaris.kodekaris}+' '+${usulkartus.kodeinstansi.kodeinstansi}+''+${usulkartus.nomorurutkaris}"></td></h4>
+           <h4><td class="text-center" th:text="${usulkartus.kodeinstansi.kodekaris}+' '+${usulkartus.kodeinstansi.kodeinstansi}+''+${usulkartus.nomorurutkaris}"></td></h4>
            <th>Nama : <td class="text-center" th:text="${usulkartus.nip.namapasangan}"></td></th>
            <th>Tanggal Lahir : <td class="text-center" th:text="${#dates.format(usulkartus.nip.tgllahirpasangan,'yyyy-MM-dd')}"></td></th>
         </tr>
